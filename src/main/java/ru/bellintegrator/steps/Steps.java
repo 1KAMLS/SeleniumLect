@@ -34,6 +34,7 @@ public class Steps //Этот класс содержит методы с анн
         AllureRuntime.print("Поиск прошёл успешно. Найдено x элементов" );
         AllureRuntime.captureScreenshot();
         AllureRuntime.printTextAttachment(page.getClass().getSimpleName());
+        System.out.println("//Коммент для коммита");
     }
 
     @Step("Проверка равности строк '{actual}' и '{expected}'")
