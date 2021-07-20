@@ -1,0 +1,13 @@
+ru\bellintegrator\pages\FindPage.class
+ru\bellintegrator\pages\Page.class
+ru\bellintegrator\pages\BellPageFactory.class
+ru\bellintegrator\task4\TaskPageFactory4.class
+ru\bellintegrator\common\exceptions\AllureRuntimeError.class
+ru\bellintegrator\task3\StepsTask.class
+ru\bellintegrator\task3\TaskPageFactory3.class
+ru\bellintegrator\common\Constants.class
+ru\bellintegrator\pages\FindPage4.class
+ru\bellintegrator\common\utils\AllureRuntime.class
+ru\bellintegrator\steps\Steps.class
+ru\bellintegrator\common\utils\PageUtils.class
+ru\bellintegrator\driver\WebDriverManager.class
