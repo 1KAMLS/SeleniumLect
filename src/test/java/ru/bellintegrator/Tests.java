@@ -102,9 +102,27 @@ public class Tests
         stepsTask4.executeFind2(nameCard2, task4);
         stepsTask4.executeFind3(task4);
     }
-//
-//    @AfterEach
-//    private void afterEach() {
-//        WebDriverManager.killCurrentDriver();
-//    }
+
+    @Test
+    public void secondTestFind(){
+        driver.get("https://bellintegrator.ru/index.php?route=product/search");
+        WebElement searchField = driver.findElement(By.id("input-search"));
+        WebElement searchButton = driver.findElement(By.id("button-search"));
+        searchField.click();
+        searchField.sendKeys("RPA");
+        searchButton.click();
+
+        List<WebElement> resaultSearch = driver.findElements(By.xpath("//*[@class='product-layout product-list col-xs-12']//*[@class='short__desc']"));
+        System.out.println(resaultSearch.size());
+        resaultSearch.stream().forEach(x-> System.out.println(x));
+        resaultSearch.stream().forEach(x-> System.out.println(x.getText()));
+
+        Assertions.assertTrue(resaultSearch.stream().anyMatch(x->x.getText().contains("Кирилл Филенков")),"Статьи не найдены");
+    }
+
+
+    @AfterEach
+    private void afterEach() {
+        WebDriverManager.killCurrentDriver();
+    }
 }
