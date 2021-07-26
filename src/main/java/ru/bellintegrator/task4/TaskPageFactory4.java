@@ -40,13 +40,11 @@ public class TaskPageFactory4 implements Page, FindPage
     @FindBy(xpath = "//button[@class='_2zH77vazcW _3tIaiy1WMf']")
     WebElement resaultSearchSORT;//Кнопка сортировки
 
-    @FieldName("Первая цена")
-    @FindBy(xpath =  "//div[@class='_1OAvzJPfIW']//*[contains(@title, 'GTX 1050 Ti')]" +
-            "/parent::h3/parent::div/parent::div/following-sibling::div/div/" +
-            "div/div/div/following-sibling::a/div/span/span")
+    @FieldName("GTX 1050 ti")
+    @FindBy(xpath =  "//div[@class='_1OAvzJPfIW']//*[contains(@title, 'GTX 1050 Ti')]/parent::h3/parent::div/parent::div/following-sibling::div//span/span")
     WebElement resaulSearch1;
 
-    @FieldName("Вторая цена")
+    @FieldName("RTX 3070")
     @FindBy(xpath =  "//div[@class='_35AHlgIzSZ']//*[contains(@title, 'RTX 3070')]/parent::a/parent::div//" +
             "following-sibling::div/following-sibling::div/div/div/div/a/" +
             "div/span/span")

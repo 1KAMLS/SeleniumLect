@@ -34,53 +34,41 @@ public class StepsTask4
     }
 
     @Step("Переход на вкладку Видеокарты")
-    public void executeFind1(Page page)
+    public void hoveringTheCursor(Page page)
     {
         Actions actions = new Actions(driver);
-        clickOnElement("Кнопка Каталога", page);//Клик по кнопке каталога
         actions.moveToElement(page.getElement("Курсор на вкладку")).build().perform();
-        clickOnElement("Вкладка Видеокарты", page);//Клик по кнопке Видеокарты
         AllureRuntime.captureScreenshot();
     }
 
-    @Step("Поиск видеокарты")
-    public void executeFind2(String text, Page page)
+    @Step("Очистка результатов поиска")
+    public void resetResult(Page page)
     {
         boolean flag=page.getElement("Поле поиска").getAttribute("value").equals("GTX 1050 ti");
         if(flag==true)
             clickOnElement("Кнопка сброса запроса", page);//Клик по кнопке сброса поискового запроса
-        page.getElement("Поле поиска").clear();
+    }
+
+    @Step("Поиск видеокарты")
+    public void mapSearch(String text, Page page)
+    {
         clickOnElement("Поле поиска", page);//Клик по полю поиска для активации поля
         page.getElement("Поле поиска").sendKeys(text + Keys.ENTER);//вставка в поле названия видеокарты
-        clickOnElement("Кнопка сортировки", page);//Клик по кнопке сортировки
         AllureRuntime.captureScreenshot();
     }
 
-    @Step("Вычисление неравности цен на видеокарты")
-    public void executeFind3(Page page)
+    @Step("Сортировка по цене")
+    public void sortingByPrice(Page page)
     {
-        try {
-                if (spanText.size() == 1)
-                {
-                String str2 = (page.getElement("Вторая цена")).getText();
-                str2 = str2.replaceAll("\\s+", "");
-                int i = Integer.parseInt(str2);
-                spanText.add(i);
-                Assertions.assertTrue(spanText.get(0) < spanText.get(1));
-                return;
-                }
+        clickOnElement("Кнопка сортировки", page);//Клик по кнопке сортировки
+    }
 
-                if (spanText.size() == 0)
-                {
-                String str1 = (page.getElement("Первая цена")).getText();
-                str1 = str1.replaceAll("\\s+", "");
-                int i = Integer.parseInt(str1);
-                spanText.add(i);
-                }
-        }
-        catch (NumberFormatException nfe)
-        {
-            System.out.println("NumberFormatException: " + nfe.getMessage());
-        }
+    @Step("Извлечение цены видеокарты")
+    public int extractingThePrice(String card, Page page)
+    {
+        String str2 = (page.getElement(card)).getText();
+        str2 = str2.replaceAll("\\s+", "");
+        int price = Integer.parseInt(str2);
+        return price;
     }
 }

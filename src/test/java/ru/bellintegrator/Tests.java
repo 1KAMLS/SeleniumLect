@@ -96,11 +96,17 @@ public class Tests
     {
         stepsTask4.goToURL(url);//браузер получает адрес страницы
         TaskPageFactory4 task4=PageFactory.initElements(driver, TaskPageFactory4.class);//создание объекта с передачей туда браузера
-        stepsTask4.executeFind1(task4);//клик по каталогу
-        stepsTask4.executeFind2(nameCard1, task4);
-        stepsTask4.executeFind3(task4);
-        stepsTask4.executeFind2(nameCard2, task4);
-        stepsTask4.executeFind3(task4);
+        stepsTask4.clickOnElement("Кнопка Каталога", task4);//Клик по кнопке каталога
+        stepsTask4.hoveringTheCursor(task4);//наведение курсора без нажатия
+        stepsTask4.clickOnElement("Вкладка Видеокарты", task4);//Клик по кнопке Видеокарты
+        stepsTask4.mapSearch(nameCard1, task4);//поиск карты
+        stepsTask4.sortingByPrice(task4);//сортировка по ценеп
+        int priceGTX = stepsTask4.extractingThePrice(nameCard1, task4);//извлечение цены
+        stepsTask4.resetResult(task4);//сброс результатов поиска
+        stepsTask4.mapSearch(nameCard2, task4);//поиск карты
+        stepsTask4.sortingByPrice(task4);//сортировка по ценеп
+        int priceRTX = stepsTask4.extractingThePrice(nameCard2, task4);//извлечение цены
+        Assertions.assertTrue(priceGTX<priceRTX);//сравнение цен
     }
 
     @Test
@@ -121,8 +127,8 @@ public class Tests
     }
 
 
-    @AfterEach
-    private void afterEach() {
-        WebDriverManager.killCurrentDriver();
-    }
+//    @AfterEach
+//    private void afterEach() {
+//        WebDriverManager.killCurrentDriver();
+//    }
 }
