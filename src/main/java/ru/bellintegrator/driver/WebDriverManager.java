@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 public class WebDriverManager
 {
-
     private static WebDriver currentDriver;//создаётся объект вебдрайвера ждя браузера
 
     public static WebDriver getCurrentDriver()//этот метод возвращает драйвер
