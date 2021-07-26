@@ -39,9 +39,9 @@ public class StepsTask3
         AllureRuntime.printTextAttachment(page.getClass().getSimpleName());
     }
 
-    @Step("Передача параметров {Покупка} и {Продажа}")
-    public void calc(FindPage page, int a, int b)
+    @Step("Сравнение цен покупки и продажи по заданной влюте {currency}")
+    public void comparisonPrice(FindPage page, String currency)
     {
-        assertTrue(page.getResults(a,b));//проверка неравенства покупки и продажи долларов
+        page.getResults(currency);
     }
 }

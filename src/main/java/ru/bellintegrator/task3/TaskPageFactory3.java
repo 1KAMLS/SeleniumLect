@@ -1,5 +1,7 @@
 package ru.bellintegrator.task3;
 
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,11 +32,6 @@ public class TaskPageFactory3 implements Page, FindPage
     @FindBy(xpath = "//a[@href='https://www.open.ru/']")
     WebElement resaultSearch;
 
-    @FindAll(@FindBy(xpath = "//*[@class='main-page-exchange__row main-page-exchange__row--with-border']" +
-            "//*[@class='main-page-exchange__rate']"))
-    List<WebElement> resaulSearch;
-
-
 
     @Override
     public void clickElement()
@@ -50,16 +47,15 @@ public class TaskPageFactory3 implements Page, FindPage
     }
 
     @Override
-    public boolean getResults(int a, int b)
+    public void getResults(String currency)
     {
-        for(WebElement w : resaulSearch)
-            spanText.add((w.getText()).replace(",","."));
-        //извлечение из списка вебэлеметов текста и передача их в текстовый список с одновременной заменой запятых на точки
+        WebElement purchase=driver.findElement(By.xpath("//td[1]//span[.='"+currency+"']/ancestor::td/following-sibling::td[1]//span"));
+        WebElement sale=driver.findElement(By.xpath("//td[1]//span[.='"+currency+"']/ancestor::td/following-sibling::td[3]//span"));
 
-        for (String s: spanText)
-            spanDouble.add(Double.parseDouble(s));//создание списка числовых значений из текстового списка
+        String str1=purchase.getText().replace(",",".");
+        String str2=sale.getText().replace(",",".");
 
-        return spanDouble.get(a)<spanDouble.get(b);//передача значений из списка по заданным аргументам
+        Assertions.assertTrue(Double.parseDouble(str1)<Double.parseDouble(str2));
     }
 
     @Override

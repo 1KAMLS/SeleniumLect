@@ -8,5 +8,6 @@ public interface FindPage
 
     void clickElement();
 
-    boolean getResults(int a, int b);
+    void getResults(String str);
+
 }

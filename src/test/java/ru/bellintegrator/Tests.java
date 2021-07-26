@@ -83,9 +83,9 @@ public class Tests
         stepsTask3.goToURL(url);//браузер получает адрес страницы
         TaskPageFactory3 task3=PageFactory.initElements(driver, TaskPageFactory3.class);//создание объекта с передачей туда браузера
         stepsTask3.findWord(name, task3);//вставка в поле ввода слова "Открытие" и переход
-        stepsTask3.findClick(task3);
-        stepsTask3.calc(task3,0,1);
-        stepsTask3.calc(task3,2,3);
+        stepsTask3.findClick(task3);//переход на страницу банка
+        stepsTask3.comparisonPrice(task3, "USD");//сравнение покупки и продажу долларов
+        stepsTask3.comparisonPrice(task3, "EUR");//сравнение покупки и продаже евро
     }
 
     @Feature("Сравнение видеокарт")

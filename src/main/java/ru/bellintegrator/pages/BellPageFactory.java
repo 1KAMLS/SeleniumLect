@@ -50,8 +50,8 @@ public class BellPageFactory implements Page, FindPage
     }
 
     @Override
-    public boolean getResults(int a, int b) {
-        return false;
+    public void getResults(String str) {
+
     }
 
     @Override//метод интерфейса FindPage
