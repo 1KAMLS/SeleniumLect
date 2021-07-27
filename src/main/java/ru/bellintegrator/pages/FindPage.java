@@ -8,6 +8,7 @@ public interface FindPage
 
     void clickElement();
 
-    void getResults(String str);
+    void getResults();
 
+    double [] refundOfPrices(String str);
 }

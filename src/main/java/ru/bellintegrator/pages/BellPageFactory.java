@@ -50,7 +50,7 @@ public class BellPageFactory implements Page, FindPage
     }
 
     @Override
-    public void getResults(String str) {
+    public void getResults() {
 
     }
 

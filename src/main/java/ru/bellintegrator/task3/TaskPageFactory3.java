@@ -47,7 +47,7 @@ public class TaskPageFactory3 implements Page, FindPage
     }
 
     @Override
-    public void getResults(String currency)
+    public double[] refundOfPrices(String currency)
     {
         WebElement purchase=driver.findElement(By.xpath("//td[1]//span[.='"+currency+"']/ancestor::td/following-sibling::td[1]//span"));
         WebElement sale=driver.findElement(By.xpath("//td[1]//span[.='"+currency+"']/ancestor::td/following-sibling::td[3]//span"));
@@ -55,7 +55,17 @@ public class TaskPageFactory3 implements Page, FindPage
         String str1=purchase.getText().replace(",",".");
         String str2=sale.getText().replace(",",".");
 
-        Assertions.assertTrue(Double.parseDouble(str1)<Double.parseDouble(str2));
+        double [] arrayPrice=new double[2];
+        arrayPrice[0]=Double.parseDouble(str1);
+        arrayPrice[1]=Double.parseDouble(str2);
+
+        return arrayPrice;
+    }
+
+    @Override
+    public void getResults()
+    {
+
     }
 
     @Override

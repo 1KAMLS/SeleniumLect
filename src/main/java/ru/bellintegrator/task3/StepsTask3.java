@@ -1,11 +1,10 @@
 package ru.bellintegrator.task3;
 
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import ru.bellintegrator.common.utils.AllureRuntime;
 import ru.bellintegrator.pages.FindPage;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepsTask3
 {
@@ -42,6 +41,8 @@ public class StepsTask3
     @Step("Сравнение цен покупки и продажи по заданной влюте {currency}")
     public void comparisonPrice(FindPage page, String currency)
     {
-        page.getResults(currency);
+        double [] arrayPrice;
+        arrayPrice=page.refundOfPrices(currency);
+        Assertions.assertTrue(arrayPrice[0]<arrayPrice[1]);
     }
 }

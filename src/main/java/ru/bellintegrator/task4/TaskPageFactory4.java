@@ -61,7 +61,7 @@ public class TaskPageFactory4 implements Page, FindPage
     }
 
     @Override
-    public void getResults(String str) {
+    public void getResults() {
 
     }
 
