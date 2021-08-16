@@ -54,6 +54,11 @@ public class BellPageFactory implements Page, FindPage
 
     }
 
+    @Override
+    public double[] refundOfPrices(String str) {
+        return new double[0];
+    }
+
     @Override//метод интерфейса FindPage
     @Step("Произвести запрос {strokFind}")//Используется аннотация Step.
     // В параметр "strokFind" аллюр-отчета будет записана переданная в метод find переменная

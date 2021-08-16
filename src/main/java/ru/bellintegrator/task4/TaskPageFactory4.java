@@ -53,7 +53,14 @@ public class TaskPageFactory4 implements Page, FindPage
     @FieldName("Кнопка сброса запроса")
     @FindBy(className="ImikwIWLKB")
     WebElement searchButton;
+/////////////////////////////////////////////
+@FieldName("кнопка 1")
+@FindBy(xpath =  "//a[@href='/catalog--kompiuternaia-tekhnika/54425']")
+WebElement resaulSearch4;
 
+    @FieldName("кнопка 2")
+    @FindBy(xpath =  "//a[@href='/catalog--noutbuki/54544/list?hid=91013' and @class='_2qvOOvezty _2x2zBaVN-3 _9qbcyI_fyS']")
+    WebElement resaulSearch5;
 
     @Override
     public void find(String findText){
@@ -63,6 +70,11 @@ public class TaskPageFactory4 implements Page, FindPage
     @Override
     public void getResults() {
 
+    }
+
+    @Override
+    public double[] refundOfPrices(String str) {
+        return new double[0];
     }
 
     @Override
